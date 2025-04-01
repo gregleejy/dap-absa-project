@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import pickle
 import os
+import joblib
 
 app = FastAPI()
 
@@ -20,8 +21,7 @@ class TextInput(BaseModel):
 
 # Load the ABSA model
 try:
-    with open('model_lr3e-05_epochs4_batch8.pkl', 'rb') as f:
-        model = pickle.load(f)
+    model = joblib.load("model_lr3e-05_epochs4_batch8.pkl")
 except FileNotFoundError:
     raise Exception("Model file not found. Please ensure model.pkl exists in the backend directory.")
 
