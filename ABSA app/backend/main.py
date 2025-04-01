@@ -1,8 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-import pickle
-import os
 import joblib
 
 app = FastAPI()
@@ -19,22 +17,18 @@ app.add_middleware(
 class TextInput(BaseModel):
     text: str
 
-# Load the ABSA model
+# Load model and vectorizer
 try:
     model = joblib.load("model_lr3e-05_epochs4_batch8.pkl")
-except FileNotFoundError:
-    raise Exception("Model file not found. Please ensure model.pkl exists in the backend directory.")
+except FileNotFoundError as e:
+    raise Exception(f"Missing file: {str(e)}")
 
 @app.post("/analyze")
 async def analyze_text(input: TextInput):
     try:
-        # Here you would use your loaded model to analyze the text
-        # This is a placeholder implementation - replace with your actual model logic
-        aspects = model.predict(input.text)  # Adjust based on your model's API
-        return {"aspects": aspects}
+        prediction = model.predict(input)
+        return {"aspects": prediction.tolist()}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+# No need for __main__ block — uvicorn will be run from Docker CMD
