@@ -103,8 +103,10 @@ OPENAI_API_KEY=your_openai_api_key_here
 ---
 
 ## 👨‍💻 Author
+
 **Darrius Ng**  
 GitHub: [@darriusnjh](https://github.com/darriusnjh)
+
 **Greg Lee**  
 GitHub: [@gregleejy](https://github.com/gregleejy)
 
