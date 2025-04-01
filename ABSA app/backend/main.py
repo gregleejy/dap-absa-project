@@ -20,7 +20,7 @@ class TextInput(BaseModel):
 
 # Load the ABSA model
 try:
-    with open('/home/ubuntu/model_lr3e-05_epochs4_batch8.pkl', 'rb') as f:
+    with open('model_lr3e-05_epochs4_batch8.pkl', 'rb') as f:
         model = pickle.load(f)
 except FileNotFoundError:
     raise Exception("Model file not found. Please ensure model.pkl exists in the backend directory.")
