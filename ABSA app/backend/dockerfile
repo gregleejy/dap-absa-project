@@ -7,12 +7,17 @@ WORKDIR /code
 COPY requirements.txt .
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
-# Copy app and model files
+# Copy all backend files
 COPY main.py .
+COPY model.py .
+COPY util.py .
 COPY model_lr3e-05_epochs4_batch8.pkl .
 
+# Copy frontend dist folder
+COPY dist/ ./dist/
+
 # Expose the API port
-EXPOSE 8080
+EXPOSE 8000
 
 # Run the FastAPI app
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

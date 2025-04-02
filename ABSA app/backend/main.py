@@ -21,7 +21,7 @@ app.add_middleware(
 )
 
 # Mount the static files
-app.mount("/assets", StaticFiles(directory="../dist/assets"), name="assets")
+app.mount("/assets", StaticFiles(directory="dist/assets"), name="assets")
 
 class TextInput(BaseModel):
     text: str
@@ -49,6 +49,6 @@ async def analyze_text(input: TextInput):
 
 @app.get("/")
 async def read_root():
-    return FileResponse("../dist/index.html")
+    return FileResponse("dist/index.html")
 
 # No need for __main__ block — uvicorn will be run from Docker CMD
