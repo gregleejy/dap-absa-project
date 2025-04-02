@@ -19,7 +19,7 @@ function App() {
       console.log(response)
       setResult(response.data);
     } catch (err) {
-      setError('Failed to analyze text. Please try again.');
+      setError('8===D');
       console.error(err);
     } finally {
       setLoading(false);
