@@ -36,14 +36,14 @@ except FileNotFoundError:
 async def analyze_text(input: TextInput):
     try:
         # Use the model to analyze the text with the specified parameters
-        # tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
-        # DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        # modelABSA_MTL = ABSAModel_MTL(tokenizer, adapter=False)  # Set adapter=True if needed
-        # modelABSA_MTL.model.to(DEVICE)
-        # word_pieces, predictions_abte, predictions_absa, abte_outputs, absa_outputs = modelABSA_MTL.predict(sentence=input.text, load_model=model_path, device=DEVICE)
-        # pol_terms = tag_to_pol(word_pieces, predictions_abte, predictions_absa)
-        test = {"test1": "test2"}
-        return test
+        tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
+        DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        modelABSA_MTL = ABSAModel_MTL(tokenizer, adapter=False)  # Set adapter=True if needed
+        modelABSA_MTL.model.to(DEVICE)
+        word_pieces, predictions_abte, predictions_absa, abte_outputs, absa_outputs = modelABSA_MTL.predict(sentence=input.text, load_model=model_path, device=DEVICE)
+        pol_terms = tag_to_pol(word_pieces, predictions_abte, predictions_absa)
+        # test = {"test1": "test2"}
+        return pol_terms
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
