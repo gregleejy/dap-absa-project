@@ -4,5 +4,8 @@ export interface AspectPolarity {
 }
 
 export interface AnalysisResponse {
-  aspects: AspectPolarity[];
+  aspects: Array<{
+    aspect: string;
+    polarity: string;
+  }>;
 }
