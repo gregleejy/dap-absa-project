@@ -72,10 +72,6 @@ We used the **Reddit Mental Health dataset**, which includes posts from users di
 git clone https://github.com/yourusername/absa-reddit-mental-health.git
 cd absa-reddit-mental-health
 pip install -r requirements.txt
-
-```
-Got it — here's the full section from **"Set Up OpenAI API Key" onwards** in **pure Markdown format** (no code blocks wrapped in triple backticks):
-
 ---
 
 ### 🔑 Set Up OpenAI API Key
