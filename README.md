@@ -83,6 +83,7 @@ To use the OpenAI API for generating synthetic data, you’ll need to set up you
 3. Add your key to the `.env` file like this:
 
 ```
+```
 OPENAI_API_KEY=your_openai_api_key_here
 ```
 
